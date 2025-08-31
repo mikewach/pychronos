@@ -728,6 +728,20 @@ class controlApi(dbus.service.Object):
             }
     
     @dbus.service.method(interface, in_signature='', out_signature='a{sv}')
+    def softTrigger(self):
+        try:
+            self.camera.softTrigger()
+            return {
+                "state": self.camera.state
+            }
+        except CameraError as e:
+            return {
+                "state": self.camera.state,
+                "error": type(e).__name__,
+                "message": str(e)
+            }
+    
+    @dbus.service.method(interface, in_signature='', out_signature='a{sv}')
     def stopRecording(self):
         try:
             self.camera.stopRecording()
