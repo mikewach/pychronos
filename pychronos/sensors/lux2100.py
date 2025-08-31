@@ -34,7 +34,7 @@ class lux2100(api):
     MAX_HRES = 1920
     MAX_VRES = 1080
     MIN_HRES = 640
-    MIN_VRES = 96
+    MIN_VRES = 8
     HRES_INCREMENT = 32
     VRES_INCREMENT = 2
     MAX_VDARK = 8
@@ -653,8 +653,8 @@ class lux2100(api):
         logging.debug('Starting ADC gain calibration')
 
         # Setup some math constants
-        numRows = 64
         fSize = self.getCurrentGeometry()
+        numRows = min(64, fSize.vRes)
         tRefresh = (self.frameClocks * 10) / self.LUX2100_SENSOR_HZ
         pixFullScale = (1 << fSize.bitDepth)
 
