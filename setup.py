@@ -36,7 +36,7 @@ setup (name='PyChronos',
        license='GPL',
        url = 'https://github.com/krontech/pychronos',
        author = about['__author__'],
-       author_email = 'oskirby@gmail.com',
+       author_email = 'mike.a.wach@gmail.com',
        entry_points={
            'console_scripts': [ 'camControl=camControl.__main__:main' ]
        },
